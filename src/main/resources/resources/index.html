@@ -1,0 +1,43 @@
+<!doctype html>
+<html ng-app="app">
+    <head>
+        <title>Hello</title>
+        <!--<base href="/">-->
+        <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Hello there!</h1>
+            <ul>
+                <li><a href="/">Index</a></li>
+                <li><a href="/page1">Page 1</a></li>
+                <li><a href="/page2">Page 2</a></li>
+                <li><a href="/pages/page3">Page 3</a></li>
+            </ul>
+        </div>
+        <div class="container" ng-view>
+        </div>
+
+        <script type="text/javascript" src="/bower_components/angular/angular.js"></script>
+        <script type="text/javascript" src="/bower_components/angular-route/angular-route.js"></script>
+
+        <script type="text/javascript">
+            angular.module("app", ["ngRoute"]).config(function($routeProvider, $locationProvider) {
+                $routeProvider.when("/", {
+                    template: "<h1>Index</h1>"
+                }).when("/page1", {
+                    template: "<h1>Page 1</h1>"
+                }).when("/page2", {
+                    template: "<h1>Page 2</h1>"
+                }).when("/pages/page3", {
+                    template: "<h1>Page 3</h1>"
+                }).otherwise({
+                    redirectTo: "/"
+                });
+
+                $locationProvider.html5Mode(true);
+                $locationProvider.hashPrefix('!');
+            });
+        </script>
+    </body>
+</html>
