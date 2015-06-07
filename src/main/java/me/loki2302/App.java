@@ -1,21 +1,15 @@
 package me.loki2302;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+@SpringBootApplication
 public class App {
     public static void main(String[] args) {
-        SpringApplication.run(Configuration.class, args);
-    }
-
-    @EnableAutoConfiguration
-    @ComponentScan
-    public static class Configuration {
-
+        SpringApplication.run(App.class, args);
     }
 
     @Controller
@@ -26,18 +20,12 @@ public class App {
             return "hello there!";
         }
 
-        @RequestMapping("/page1")
-        public String page1() {
-            return "forward:/index.html";
-        }
-
-        @RequestMapping("/page2")
-        public String page2() {
-            return "forward:/index.html";
-        }
-
-        @RequestMapping("/pages/page3")
-        public String page3() {
+        @RequestMapping({
+                "/page1",
+                "/page2",
+                "/pages/page3"
+        })
+        public String indexHtml() {
             return "forward:/index.html";
         }
     }
