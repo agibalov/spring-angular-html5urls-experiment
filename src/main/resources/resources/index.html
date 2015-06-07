@@ -29,10 +29,10 @@
                     template: "<h1>Page 1</h1>"
                 }).when("/page2", {
                     template: "<h1>Page 2</h1>"
-                }).when("/pages/page3", {
-                    template: "<h1>Page 3</h1>"
+                }).when("/pages/:something", {
+                    template: "<h1>Something under /pages</h1>"
                 }).otherwise({
-                    redirectTo: "/"
+                    template: '<h1>No idea what it is, but I handle it</h1>'
                 });
 
                 $locationProvider.html5Mode(true);
