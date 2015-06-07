@@ -49,10 +49,12 @@ public class App extends WebMvcConfigurerAdapter {
     }
 
     @RestController
-    public static class HomeController {
-        @RequestMapping("/test")
-        public String hello() {
-            return "hello there!";
+    public static class ApiController {
+        public static final String API_RESPONDS_WITH_THIS_TEXT = "I am API";
+
+        @RequestMapping("/api")
+        public String api() {
+            return API_RESPONDS_WITH_THIS_TEXT;
         }
     }
 
